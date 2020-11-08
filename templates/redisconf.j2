@@ -1,33 +1,31 @@
-# puppet managed file
-<% if defined?(@description) -%>
-  
+{% if redis_instance_description is defined %}
 #
-# <%= @description %>
+# {{ redis_instance_description }}
 #
-<% end -%>
+{% endif %}
 
-daemonize <%= scope.function_bool2yesno([@daemonize]) %>
-pidfile /var/run/redis-<%= @redis_instancename %>/redis.pid
+daemonize yes
+pidfile /var/run/redis/{{ redis_servicename }}.pid
 
-
-<% if @listen_tcp -%>
-bind <%= @bind %>
-port <%= @port %>
-<% else -%>
+{% if redis_listen_tcp %}
+bind {{ redis_bind }}
+port {{ redis_port }}
+{% else %}
 port 0
-<% end -%>
-<% if defined?(@password) -%>
-requirepass "<%= @password %>"
-<% end -%>
+{% endif %}
 
-<% if defined?(@unixsocket) -%>
-unixsocket <%= @unixsocket %>
-unixsocketperm <%= @unixsocketperm %>
-<% end -%>
+{% if redis_password is defined %}
+requirepass "{{ redis_password }}"
+{% endif %}
 
-timeout <%= @timeout %>
+{% if redis_unixsocket %}
+unixsocket {{ redis_unixsocket }}
+unixsocketperm {{ redis_unixsocketperm }}
+{% end %}
+
+timeout {{ redis_timeout }}
 loglevel notice
-logfile /var/log/redis/redis-<%= @redis_instancename %>.log
+logfile /var/log/redis/{{ redis_servicename }}.log
 
 
 databases 16
@@ -36,7 +34,7 @@ save 300 10
 save 60 10000
 rdbcompression yes
 dbfilename dump.rdb
-dir /var/lib/redis-<%= @redis_instancename %>
+dir /var/lib/{{ redis_servicename }}
 slave-serve-stale-data yes
 appendonly no
 appendfsync everysec

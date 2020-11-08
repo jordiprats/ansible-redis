@@ -1,2 +1,8 @@
 ---
-# defaults file for redis
+redis_listen_tcp: true
+redis_bind: '0.0.0.0'
+redis_port: '6379'
+redis_timeout: 0
+
+# redis_unixsocket: '/tmp/redis.sock'
+redis_unixsocketperm: '700'

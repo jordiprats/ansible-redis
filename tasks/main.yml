@@ -8,3 +8,15 @@
     name: "{{ redis_package }}"
     state: present
 
+- name: redis config file
+  template:
+    src: redisconf.j2
+    dest: "{{ redis_conf }}"
+    mode: 0644
+  notify: restart redis
+
+- name: redis service
+  service:
+    name: "{{ redis_servicename }}" 
+    state: started 
+    enabled: yes
