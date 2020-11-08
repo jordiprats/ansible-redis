@@ -1,6 +1,6 @@
 ---
-redis_package: redis-server
-redis_servicename:
+redis_package:
   - redis-server
   - redis-tools
+redis_servicename: redis-server
 redis_conf: /etc/redis/redis.conf
