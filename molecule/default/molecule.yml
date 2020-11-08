@@ -5,8 +5,14 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: instance
+  - name: alpine
     image: alpine:latest
+  - name: centos8
+    image: centos:8
+    command: "/usr/sbin/init"
+  - name: ubuntu20
+    image: ubuntu:20.04
+    command: "/lib/systemd/systemd"
 provisioner:
   name: ansible
   env:
