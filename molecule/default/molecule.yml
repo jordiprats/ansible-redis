@@ -7,13 +7,10 @@ driver:
 platforms:
   - name: alpine
     image: alpine:latest
+    privileged: true
   - name: centos8
     image: centos:8
     command: "/usr/sbin/init"
-    privileged: true
-  - name: ubuntu20
-    image: ubuntu:20.04
-    command: "/lib/systemd/systemd"
     privileged: true
 provisioner:
   name: ansible

@@ -1,7 +1,6 @@
 ---
-redis_package: 
-  - redis
-  - redis-openrc
+redis_package: redis
 # /usr/bin/redis-server
 redis_servicename: redis
 redis_conf: /etc/redis.conf
+redis_manage_service: false

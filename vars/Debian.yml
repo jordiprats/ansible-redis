@@ -4,3 +4,4 @@ redis_package:
   - redis-tools
 redis_servicename: redis-server
 redis_conf: /etc/redis/redis.conf
+redis_manage_service: true

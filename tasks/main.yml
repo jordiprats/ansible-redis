@@ -20,3 +20,4 @@
     name: "{{ redis_servicename }}" 
     state: started 
     enabled: yes
+  when: redis_manage_service
