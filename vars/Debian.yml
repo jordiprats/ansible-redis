@@ -1,0 +1,4 @@
+---
+redis_package: redis-server
+redis_servicename: redis-server
+redis_conf: /etc/redis/redis.conf
