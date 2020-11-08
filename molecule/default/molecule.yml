@@ -9,5 +9,7 @@ platforms:
     image: alpine:latest
 provisioner:
   name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../
 verifier:
   name: ansible

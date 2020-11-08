@@ -18,10 +18,10 @@ port 0
 requirepass "{{ redis_password }}"
 {% endif %}
 
-{% if redis_unixsocket %}
+{% if redis_unixsocket is defined %}
 unixsocket {{ redis_unixsocket }}
 unixsocketperm {{ redis_unixsocketperm }}
-{% end %}
+{% endif %}
 
 timeout {{ redis_timeout }}
 loglevel notice
